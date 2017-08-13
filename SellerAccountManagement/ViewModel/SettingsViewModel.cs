@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace SellerAccountManagement.ViewModel
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SettingsViewModel: INotifyPropertyChanged
     {
         #region Properties
