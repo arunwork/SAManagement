@@ -37,7 +37,7 @@ namespace SellerAccountManagement
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
 
         private void btnMessages_Click(object sender, RoutedEventArgs e)
@@ -47,8 +47,8 @@ namespace SellerAccountManagement
 
         private void btnSettings_Click(object sender, RoutedEventArgs e)
         {
-            SettingsPage settingsPage = new SettingsPage();
-            this.NavigationService.Navigate(settingsPage);
+            SignUpPage signUpPage = new SignUpPage();
+            this.NavigationService.Navigate(signUpPage);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)

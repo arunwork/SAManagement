@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SellerAccountManagement.View;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -22,7 +23,7 @@ namespace SellerAccountManagement
             navigationWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             //  navigationWindow.Icon = new BitmapImage(new Uri("pack://application:,,,/AppName;component/Assets/Images/ApplicationIcon.png"));
             navigationWindow.Title = "Seller Account Management";
-            var page = new MainPage();
+            var page = new LoginPage();
             navigationWindow.Navigate(page);
             navigationWindow.Show();
         }

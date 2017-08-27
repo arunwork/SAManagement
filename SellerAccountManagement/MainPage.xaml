@@ -23,16 +23,16 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid Width="200" Height="200" Background="#FF8C00" Margin="10">
-                <Button x:Name="btnHome"  Background="Transparent" Style="{StaticResource CustomButtonStyle}" Content="&#xE10F;" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnHome_Click"   />
+                <Button x:Name="btnHome"  Background="Transparent" Style="{StaticResource DefaultButtonStyle}" Content="&#xE10F;" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnHome_Click"   />
             </Grid>
             <Grid Grid.Row="0" Grid.Column="1" Width="200" Height="200" Background="#FF8C00" Margin="10">
-                <Button x:Name="btnMessages" Content="&#xE119;" Background="Transparent" Style="{StaticResource CustomButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnMessages_Click"   />
+                <Button x:Name="btnMessages" Content="&#xE119;" Background="Transparent" Style="{StaticResource DefaultButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnMessages_Click"   />
             </Grid>
             <Grid Grid.Row="1" Grid.Column="0" Width="200" Height="200" Background="#FF8C00" Margin="10">
-                <Button x:Name="btnSettings" Content="&#xE115;" Background="Transparent" Style="{StaticResource CustomButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSettings_Click"   />
+                <Button x:Name="btnSettings" Content="&#xE115;" Background="Transparent" Style="{StaticResource DefaultButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnSettings_Click"   />
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Width="200" Height="200" Background="#FF8C00" Margin="10">
-                <Button x:Name="btnUser" Content="&#xE13D;" Background="Transparent" Style="{StaticResource CustomButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnUser_Click"   />
+                <Button x:Name="btnUser" Content="&#xE13D;" Background="Transparent" Style="{StaticResource DefaultButtonStyle}" FontFamily="Segoe UI Symbol" FontSize="50" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnUser_Click"   />
             </Grid>
         </Grid>
     </Grid>
