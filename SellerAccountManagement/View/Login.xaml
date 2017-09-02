@@ -1,0 +1,58 @@
+﻿<Page x:Class="SellerAccountManagement.View.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:SellerAccountManagement.View"
+      xmlns:helpers="clr-namespace:SellerAccountManagement.Helpers"
+      xmlns:enum="clr-namespace:SellerAccountManagement.Enums"
+      mc:Ignorable="d" 
+      d:DesignHeight="800" d:DesignWidth="900"
+      Title="LoginPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Grid x:Name="GrdLogin" Width="{Binding PanelWidth}" d:IsLocked="True">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  d:IsLocked="True">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <materialDesign:Ripple/>
+                    <TextBlock Grid.Row="0" Text="Username" Foreground="#C5C5C5" FontSize="18" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,20,0,0" d:IsLocked="True" />
+
+                    <TextBox x:Name="TxtUsername" Grid.Row="1"  Text="{Binding Username}" Width="250"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Center" Style="{StaticResource LoginTextBoxStyle}" />
+
+                    <TextBlock Grid.Row="2" Text="Password" Foreground="#C5C5C5" FontSize="18" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,0" d:IsLocked="True" />
+
+                    <helpers:BindablePasswordHelper Grid.Row="3"  Visibility="Collapsed" x:Name="TxtHidden"
+                                             Password="{Binding Password,Mode=TwoWay}" Width="150" Height="30"
+                                             HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0"/>
+                    <PasswordBox x:Name="TxtPassword" Grid.Row="3"  Margin="0,10,0,0"  helpers:PasswordBoxHelper.Attach="True" ForceCursor="True" 
+                             helpers:PasswordBoxHelper.Password="{Binding Path=Password, ElementName=TxtHidden, Mode=TwoWay}" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource PaswordBoxStyle}" d:IsLocked="True"/>
+
+                    <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,10,0,20" d:IsLocked="True">
+                        <Button x:Name="BtnLogin"  Height="40" Padding="10,0,10,0" VerticalAlignment="Top" Margin="10,10,0,0" Style="{StaticResource ActionButtonStyle}" d:IsLocked="True"
+                                         Command="{Binding LoginCommand,Mode=OneWay}" CommandParameter="{x:Static enum:ActionType.Login}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" d:IsLocked="True">
+                                    <TextBlock Text="Login" FontSize="25" d:IsLocked="True"/>
+                                    <!--<TextBlock Text="Logging in..." FontSize="20" Visibility="{Binding IsLoggingIn,Mode=TwoWay,Converter={StaticResource BooleanToVisibilityConverter}}" d:IsLocked="True"/>-->
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
