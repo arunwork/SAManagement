@@ -1,0 +1,74 @@
+﻿<Page x:Class="SellerAccountManagement.View.SignUpPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SellerAccountManagement.View"
+      xmlns:ph="clr-namespace:SellerAccountManagement.Helpers"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300" ShowsNavigationUI="False"
+      Title="SignUpPage" Background="Black">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="backButton" Content="&#xE0BA;" FontFamily="Segoe UI Symbol" FontSize="25"  VerticalAlignment="Center" HorizontalAlignment="Left" Foreground="White" Style="{StaticResource DefaultButtonStyle}" Margin="24,12,0,12" Click="backButton_Click"   />
+            <TextBlock Margin="10" Text="User Registration" FontWeight="Light" Foreground="White" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Left" />
+        </StackPanel>
+        <Grid Grid.Row="1" Background="#f5f5f5">
+            <Grid Margin="20,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="99.262" />
+                    <ColumnDefinition Width="50.738"/>
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Left" Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Margin="0,14">
+                    <Run Text="Firstname"/>
+                    <Run Text="*" Foreground="Red" />
+                </TextBlock>
+                <TextBox x:Name="txtBoxFirstName" Grid.Column="2" Text="{Binding FirstName,Mode=TwoWay}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <TextBlock Grid.Row="1" HorizontalAlignment="Left" Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Margin="0,14">
+                    <Run Text="Lastname"/>
+                    <Run Text="*" Foreground="Red" />
+                </TextBlock>
+                <TextBox x:Name="txtBoxLastName" Grid.Row="1" Text="{Binding LastName,Mode=TwoWay}" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <TextBlock Grid.Row="2" HorizontalAlignment="Left"  Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Margin="0,14">
+                    <Run Text="Email"/>
+                    <Run Text="*" Foreground="Red" />
+                </TextBlock>
+                <TextBox x:Name="txtBoxEmail" Grid.Row="2" Text="{Binding Email,Mode=TwoWay}" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <TextBlock Grid.Row="3" HorizontalAlignment="Left" Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Margin="0,14">
+                    <Run Text="Password"/>
+                    <Run Text="*" Foreground="Red" />
+                </TextBlock>
+                <PasswordBox x:Name="txtBoxPassword" ph:PasswordHelper.Attach="True" ph:PasswordHelper.Password="{Binding Password,Mode=TwoWay}" Grid.Row="3" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <TextBlock Grid.Row="4" HorizontalAlignment="Left"  Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,14">
+                      <Run Text="Confirm Password"/>
+                    <Run Text="*" Foreground="Red" />
+                </TextBlock>
+                <PasswordBox x:Name="txtBoxConfirmPassword" ph:PasswordHelper.Attach="True" ph:PasswordHelper.Password="{Binding ConfirmPassword,Mode=TwoWay}" Grid.Row="4" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <TextBlock Grid.Row="5" HorizontalAlignment="Left" Text="Phone Number" Foreground="#145a32" FontSize="16" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="0,14"/>
+                <TextBox x:Name="txtBoxPhoneNumber" Text="{Binding PhoneNumber,Mode=TwoWay}" Grid.Row="5" Grid.Column="2" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" HorizontalAlignment="Left" FontSize="15" VerticalAlignment="Center" Width="250" Height="30" Margin="0,10"/>
+
+                <Button x:Name="btnSignUp" Grid.Row="6" Content="SignUp" HorizontalAlignment="Right" VerticalAlignment="Center"  FontWeight="SemiBold" Width="75" Style="{StaticResource CustomButtonStyle}" FontSize="15" Click="btnSignUp_Click" Grid.Column="2" Height="34" Margin="0,8" />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
