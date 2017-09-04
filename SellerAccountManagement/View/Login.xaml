@@ -7,52 +7,120 @@
       xmlns:local="clr-namespace:SellerAccountManagement.View"
       xmlns:helpers="clr-namespace:SellerAccountManagement.Helpers"
       xmlns:enum="clr-namespace:SellerAccountManagement.Enums"
+      xmlns:validator="clr-namespace:SellerAccountManagement.Helpers.ValidationRules"
+      xmlns:ph="clr-namespace:SellerAccountManagement.Helpers"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="900"
-      Title="LoginPage">
+      Title="LoginPage" DataContext="">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <StackPanel Grid.Row="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <Grid x:Name="GrdLogin" Width="{Binding PanelWidth}" d:IsLocked="True">
-                <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  d:IsLocked="True">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        <materialDesign:DialogHost Identifier="RootDialog">
+            <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}" Margin="4 4 0 0">
+                <materialDesign:Flipper.FrontContent>
 
-                    <materialDesign:Ripple/>
-                    <TextBlock Grid.Row="0" Text="Username" Foreground="#C5C5C5" FontSize="18" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,20,0,0" d:IsLocked="True" />
+                    <Grid Width="350" Height="300">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryDark" Padding="6">
 
-                    <TextBox x:Name="TxtUsername" Grid.Row="1"  Text="{Binding Username}" Width="250"  HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Center" Style="{StaticResource LoginTextBoxStyle}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <TextBlock Grid.Row="2" Text="Password" Foreground="#C5C5C5" FontSize="18" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,10,0,0" d:IsLocked="True" />
+                                <TextBlock Grid.Column="0" Panel.ZIndex="1" Margin="8 0 0 0" Style="{StaticResource MaterialDesignTitleTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">LOGIN</TextBlock>
+                                <Button Grid.Column="0" Panel.ZIndex="2" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                HorizontalAlignment="Right" Content="SIGN UP" Margin="0 0 8 0">
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
 
-                    <helpers:BindablePasswordHelper Grid.Row="3"  Visibility="Collapsed" x:Name="TxtHidden"
-                                             Password="{Binding Password,Mode=TwoWay}" Width="150" Height="30"
-                                             HorizontalAlignment="Left" VerticalAlignment="Center" Opacity="0"/>
-                    <PasswordBox x:Name="TxtPassword" Grid.Row="3"  Margin="0,10,0,0"  helpers:PasswordBoxHelper.Attach="True" ForceCursor="True" 
-                             helpers:PasswordBoxHelper.Password="{Binding Path=Password, ElementName=TxtHidden, Mode=TwoWay}" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" Style="{StaticResource PaswordBoxStyle}" d:IsLocked="True"/>
+                        <Grid Grid.Row="1" Margin="25 5 25 10"  VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                    <StackPanel Grid.Row="4" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,10,0,20" d:IsLocked="True">
-                        <Button x:Name="BtnLogin"  Height="40" Padding="10,0,10,0" VerticalAlignment="Top" Margin="10,10,0,0" Style="{StaticResource ActionButtonStyle}" d:IsLocked="True"
-                                         Command="{Binding LoginCommand,Mode=OneWay}" CommandParameter="{x:Static enum:ActionType.Login}">
-                            <Button.Content>
-                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" d:IsLocked="True">
-                                    <TextBlock Text="Login" FontSize="25" d:IsLocked="True"/>
-                                    <!--<TextBlock Text="Logging in..." FontSize="20" Visibility="{Binding IsLoggingIn,Mode=TwoWay,Converter={StaticResource BooleanToVisibilityConverter}}" d:IsLocked="True"/>-->
-                                </StackPanel>
-                            </Button.Content>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </Grid>
-        </StackPanel>
+                            <TextBox Grid.Row="0" FontSize="17" materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Text="{Binding Email,Mode=TwoWay}"
+                                 Margin="0 12 0 0" Style="{StaticResource MaterialDesignFloatingHintTextBox}">
+                            </TextBox>
+                            <PasswordBox Grid.Row="1" FontSize="17" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"
+                                 Margin="0 12 0 0" ph:PasswordHelper.Attach="True" ph:PasswordHelper.Password="{Binding Password,Mode=TwoWay}" materialDesign:HintAssist.FloatingScale="0.8">
+                            </PasswordBox>
+
+                            <Button Grid.Row="2" Style="{StaticResource MaterialDesignFlatButton}"
+                                Margin="0 10 0 0" Command="{Binding LoginCommand}">LOGIN</Button>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.FrontContent>
+                <materialDesign:Flipper.BackContent>
+                    <Grid Width="350" Height="450">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <materialDesign:ColorZone Grid.Row="0" Mode="PrimaryDark" Padding="6">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Panel.ZIndex="1" Margin="8 0 0 0" Style="{StaticResource MaterialDesignTitleTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">SIGN UP</TextBlock>
+                                <Button Grid.Column="0" Panel.ZIndex="2" Style="{StaticResource MaterialDesignToolForegroundButton}"
+                                Command="{x:Static materialDesign:Flipper.FlipCommand}"
+                                HorizontalAlignment="Left" Margin="0 0 8 0">
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="ArrowLeft" HorizontalAlignment="Right" />
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </materialDesign:ColorZone>
+
+                        <Grid Grid.Row="1" Margin="25 5 25 10"  VerticalAlignment="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0" FontSize="17" Text="{Binding FirstName, Mode=TwoWay}"  
+                                     materialDesign:HintAssist.Hint="First Name" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Margin="0 12 0 0">
+                            </TextBox>
+
+                            <TextBox Grid.Row="1" FontSize="17" Text="{Binding LastName, Mode=TwoWay}"
+                                     materialDesign:HintAssist.Hint="Last Name" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Margin="0 12 0 0">
+                            </TextBox>
+
+                            <TextBox Grid.Row="2" FontSize="17" Text="{Binding UserEmail, Mode=TwoWay}"
+                                     materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Margin="0 12 0 0">
+                            </TextBox>
+                            <PasswordBox Grid.Row="3" FontSize="17" ph:PasswordHelper.Attach="True" ph:PasswordHelper.Password="{Binding NewPassword,Mode=TwoWay}"
+                                         materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Margin="0 12 0 0"></PasswordBox>
+
+                            <PasswordBox Grid.Row="4" ph:PasswordHelper.Attach="True" ph:PasswordHelper.Password="{Binding ConfirmPassword,Mode=TwoWay}"
+                                         FontSize="17" materialDesign:HintAssist.Hint="Confirm Password" materialDesign:HintAssist.IsFloating="True"
+                                 materialDesign:HintAssist.FloatingScale="0.8" Margin="0 12 0 0"></PasswordBox>
+
+                            <Button Grid.Row="5" Style="{StaticResource MaterialDesignFlatButton}"
+                                Margin="0 10 0 0" Command="{Binding SignupCommand}">SIGN UP</Button>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Flipper.BackContent>
+            </materialDesign:Flipper>
+        </materialDesign:DialogHost>
     </Grid>
 </Page>

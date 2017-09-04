@@ -45,7 +45,7 @@ namespace SellerAccountManagement
                 (_background.ImageSource as BitmapImage).StreamSource.Dispose();
                 _background = null;
             }
-            var page = new Messages();
+            var page = new Login();
             navigationWindow.Navigate(page);
             navigationWindow.Show();
         }

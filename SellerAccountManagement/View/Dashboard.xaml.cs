@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SellerAccountManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace SellerAccountManagement.View
     /// </summary>
     public partial class Dashboard : Page
     {
+        private DashboardViewModel _dashboardViewModel;
         public Dashboard()
         {
             InitializeComponent();
+            _dashboardViewModel = new DashboardViewModel();
+            DataContext = _dashboardViewModel;
         }
     }
 }

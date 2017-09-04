@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SellerAccountManagement.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace SellerAccountManagement.View
     /// </summary>
     public partial class Login : Page
     {
+        private LoginViewModel _loginViewModel;
         public Login()
         {
             InitializeComponent();
+
+            _loginViewModel = new LoginViewModel();
+            this.DataContext = _loginViewModel;
+        }
+
+        private void Signup_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

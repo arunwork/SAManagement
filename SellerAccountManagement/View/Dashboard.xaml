@@ -6,25 +6,47 @@
       xmlns:local="clr-namespace:SellerAccountManagement.View"
       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:enum="clr-namespace:SellerAccountManagement.Enums"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="900"
       Title="Dashboard">
 
-    <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-        <StackPanel Orientation="Horizontal">
-            <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE10F;" Command="{Binding NavigationCommand}"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Grid.Row="0" Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                            Mode="PrimaryDark" DockPanel.Dock="Top">
+            <DockPanel>
+                <materialDesign:PopupBox DockPanel.Dock="Right" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel>
+                        <Button Content="Account" Command="{Binding AccountCommand}"/>
+                        <Button Content="Settings" Command="{Binding SettingsCommand}"/>
+                        <Button Content="Log Out" Command="{Binding LogoutCommand}"/>
+                        <Separator/>
+                        <Button Content="Exit" Command="{Binding ExitCommand}"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Seller Account Management</TextBlock>
+            </DockPanel>
+        </materialDesign:ColorZone>
+        <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE10F;" Command="{Binding NavigationCommand}"
                                    CommandParameter="{x:Static enum:ActionType.Messages}" />
 
-            <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE119;" Command="{Binding NavigationCommand}"
+                <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE119;" Command="{Binding NavigationCommand}"
                                    CommandParameter="{x:Static enum:ActionType.Messages}" />
-        </StackPanel>
+            </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE115;" Command="{Binding NavigationCommand}"
+            <StackPanel Orientation="Horizontal">
+                <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE115;" Command="{Binding NavigationCommand}"
                                    CommandParameter="{x:Static enum:ActionType.Settings}" />
 
-            <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE13D;" Command="{Binding NavigationCommand}"
+                <controls:Tile Style="{StaticResource DefaultTile}" Content="&#xE13D;" Command="{Binding NavigationCommand}"
                                    CommandParameter="{x:Static enum:ActionType.Messages}" />
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </Page>
